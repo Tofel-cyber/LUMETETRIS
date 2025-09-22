@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tetris Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Tetris 🎮</h1>
+  <p>Score: <span id="score">0</span></p>
+
+  <canvas id="tetris" width="240" height="400"></canvas>
+
+  <div>
+    <button onclick="startGame()">▶️ Start / Restart</button>
+    <button onclick="togglePause()">⏸ Pause</button>
+  </div>
+
+  <!-- Kontrol untuk HP -->
+  <div id="controls">
+    <button onclick="moveLeft()">⬅️</button>
+    <button onclick="playerRotate(1)">🔄</button>
+    <button onclick="moveRight()">➡️</button>
+    <button onclick="drop()">⬇️</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

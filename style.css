@@ -1,0 +1,87 @@
+body {
+  background: #111;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+canvas {
+  border: 2px solid #fff;
+  background: #000;
+  margin-top: 10px;
+}
+
+button {
+  margin: 5px;
+  padding: 10px 15px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #28a745;
+  color: white;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+
+button:hover {
+  background: #218838;
+}
+
+#controls {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+#controls button {
+  padding: 15px 20px;
+  font-size: 22px;
+  background: #007bff;
+}
+
+#controls button:active {
+  background: #0056b3;
+}
+
+/* Overlay Game Over */
+#game-over {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.85);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  text-align: center;
+}
+
+#game-over h2 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+#game-over p {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+#game-over button {
+  padding: 12px 20px;
+  font-size: 18px;
+  border: none;
+  border-radius: 10px;
+  background: #dc3545;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+#game-over button:hover {
+  background: #c82333;
+}
