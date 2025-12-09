@@ -111,26 +111,26 @@ canvas#tetris {
   height: 70px !important;
 }
 
-/* ✅ KONTROL TOMBOL BESAR - SELALU TAMPIL */
+/* ✅ TOMBOL MOBILE KECIL NYAMAN */
 .mobile-controls {
   display: flex !important;
   width: 100%;
-  max-width: 450px;
-  margin: 20px 0;
-  gap: 12px;
+  max-width: 350px;
+  margin: 15px 0;
+  gap: 8px;
   flex-wrap: wrap;
   justify-content: center;
 }
 
 .control-btn {
-  width: 80px !important;
-  height: 80px !important;
-  font-size: 28px !important;
-  border: 3px solid #0ff !important;
-  border-radius: 20px !important;
-  background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1) !important;
+  width: 55px !important;      /* ✅ KECIL 55px */
+  height: 55px !important;     /* ✅ KECIL 55px */
+  font-size: 20px !important;  /* ✅ FONT KECIL */
+  border: 2px solid #0ff !important;
+  border-radius: 12px !important;
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4) !important;
   color: white !important;
-  box-shadow: 0 10px 30px rgba(0, 198, 255, 0.5) !important;
+  box-shadow: 0 6px 20px rgba(0, 198, 255, 0.4) !important;
   cursor: pointer !important;
   font-weight: bold !important;
   transition: all 0.2s !important;
@@ -138,8 +138,8 @@ canvas#tetris {
 }
 
 .control-btn:active {
-  transform: scale(0.9) !important;
-  box-shadow: 0 5px 20px rgba(0, 198, 255, 0.7) !important;
+  transform: scale(0.92) !important;
+  box-shadow: 0 4px 15px rgba(0, 198, 255, 0.6) !important;
 }
 
 .controls {
