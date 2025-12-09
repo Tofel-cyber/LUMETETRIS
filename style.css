@@ -11,23 +11,27 @@ body {
   color: #0ff;
   font-family: 'Orbitron', monospace;
   min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding: 5px;
   user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
 }
 
 .container {
-  text-align: center;
-  max-width: 400px;
-  padding: 20px;
+  max-width: 100%;
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
 }
 
 header h1 {
-  font-size: 2.5rem;
+  font-size: clamp(1.8rem, 8vw, 3rem);
   font-weight: 900;
   text-shadow: 0 0 20px #0ff;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   animation: glow 2s ease-in-out infinite alternate;
 }
 
@@ -39,65 +43,103 @@ header h1 {
 .stats {
   display: flex;
   justify-content: space-around;
-  margin-bottom: 20px;
-  font-size: 1.2rem;
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 15px;
+  font-size: clamp(1rem, 4vw, 1.2rem);
   font-weight: 700;
 }
 
 .stats div {
   background: rgba(0, 255, 255, 0.1);
-  padding: 10px 20px;
-  border-radius: 10px;
-  border: 1px solid #0ff;
-  box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+  padding: 12px 20px;
+  border-radius: 12px;
+  border: 2px solid #0ff;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+  flex: 1;
+  margin: 0 5px;
 }
 
-/* ✅ FIX LAYOUT - MAIN BESAR, NEXT KECIL */
 .game-area {
   display: flex;
   gap: 15px;
   justify-content: center;
   margin-bottom: 20px;
   flex-wrap: wrap;
-  max-width: 400px;
+  width: 100%;
+  max-width: 500px;
 }
 
+/* ✅ CANVAS SUPER BESAR MOBILE */
 canvas#tetris {
-  border: 3px solid #0ff;
-  border-radius: 12px;
+  border: 5px solid #0ff !important;
+  border-radius: 16px;
   background: #000;
-  box-shadow: 0 0 30px #0ff;
+  box-shadow: 0 0 40px #0ff;
   display: block;
-  max-width: 100%;
+  width: clamp(320px, 95vw, 400px) !important;
+  height: clamp(640px, 180vw, 800px) !important;
+  max-width: 95vw !important;
+  max-height: 75vh !important;
 }
 
-/* ✅ NEXT PIECE KECIL 70x70px */
 .next-piece {
-  background: rgba(0, 255, 255, 0.1);
-  padding: 10px;
-  border-radius: 12px;
-  border: 2px solid #0ff;
-  width: 90px;           /* Kontainer kecil */
-  height: 90px;
+  background: rgba(0, 255, 255, 0.15);
+  padding: 15px;
+  border-radius: 16px;
+  border: 3px solid #0ff;
+  width: 100px;
+  height: 100px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 
 .next-piece h3 {
-  font-size: 0.8rem;
-  margin-bottom: 5px;
+  font-size: 0.9rem;
+  margin-bottom: 8px;
   color: #0ff;
 }
 
 #nextCanvas {
-  border: 2px solid #333;
-  border-radius: 8px;
+  border: 3px solid #333;
+  border-radius: 10px;
   background: #111;
-  width: 70px !important;    /* ✅ KECIL */
-  height: 70px !important;   /* ✅ KECIL */
-  margin: 0 auto;
+  width: 70px !important;
+  height: 70px !important;
+}
+
+/* ✅ KONTROL TOMBOL BESAR - SELALU TAMPIL */
+.mobile-controls {
+  display: flex !important;
+  width: 100%;
+  max-width: 450px;
+  margin: 20px 0;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.control-btn {
+  width: 80px !important;
+  height: 80px !important;
+  font-size: 28px !important;
+  border: 3px solid #0ff !important;
+  border-radius: 20px !important;
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1) !important;
+  color: white !important;
+  box-shadow: 0 10px 30px rgba(0, 198, 255, 0.5) !important;
+  cursor: pointer !important;
+  font-weight: bold !important;
+  transition: all 0.2s !important;
+  touch-action: manipulation !important;
+}
+
+.control-btn:active {
+  transform: scale(0.9) !important;
+  box-shadow: 0 5px 20px rgba(0, 198, 255, 0.7) !important;
 }
 
 .controls {
@@ -105,39 +147,29 @@ canvas#tetris {
   gap: 15px;
   justify-content: center;
   flex-wrap: wrap;
+  margin: 20px 0;
 }
 
 button {
-  padding: 15px 25px;
-  font-size: 18px;
+  padding: 18px 30px;
+  font-size: 20px;
   font-weight: 700;
   border: none;
-  border-radius: 12px;
+  border-radius: 15px;
   cursor: pointer;
   background: linear-gradient(45deg, #007bff, #00c6ff);
   color: white;
-  box-shadow: 0 6px 20px rgba(0, 198, 255, 0.4);
+  box-shadow: 0 8px 25px rgba(0, 198, 255, 0.4);
   transition: all 0.3s ease;
   text-transform: uppercase;
   letter-spacing: 1px;
+  min-width: 120px;
 }
 
 button:hover:not(:disabled) {
   background: linear-gradient(45deg, #0056b3, #0099cc);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0, 153, 204, 0.6);
-}
-
-button:active {
-  transform: translateY(0);
-  box-shadow: 0 4px 15px rgba(0, 102, 153, 0.6);
-}
-
-button:disabled {
-  background: #555;
-  cursor: not-allowed;
-  transform: none;
-  box-shadow: none;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0, 153, 204, 0.6);
 }
 
 .game-over {
@@ -156,7 +188,7 @@ button:disabled {
   opacity: 0;
   pointer-events: none;
   transition: all 0.5s ease;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(15px);
 }
 
 .game-over.active {
@@ -165,36 +197,13 @@ button:disabled {
 }
 
 .game-over h2 {
-  font-size: 3rem;
-  margin-bottom: 20px;
-  text-shadow: 0 0 20px #ff4d4f;
+  font-size: clamp(2rem, 10vw, 4rem);
+  margin-bottom: 25px;
+  text-shadow: 0 0 30px #ff4d4f;
   animation: pulse 1s infinite;
 }
 
 @keyframes pulse {
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.05); }
-}
-
-/* ✅ MOBILE RESPONSIF */
-@media (max-width: 480px) {
-  .container { padding: 10px; }
-  header h1 { font-size: 2rem; }
-  .stats { 
-    font-size: 1rem; 
-    flex-direction: column; 
-    gap: 10px; 
-  }
-  .game-area {
-    flex-direction: column;    /* ✅ HP: Next di BAWAH */
-    align-items: center;
-  }
-  .next-piece {
-    width: 80px;
-    height: 80px;
-  }
-  #nextCanvas {
-    width: 60px !important;
-    height: 60px !important;
-  }
 }

@@ -2,14 +2,14 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Tetris Pro - Level & Sound</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <title>Tetris Pro Mobile</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
     <header>
-      <h1>Tetris Pro</h1>
+      <h1>🎮 Tetris Pro</h1>
       <div class="stats">
         <div>Skor: <span id="score">0</span></div>
         <div>Level: <span id="level">1</span></div>
@@ -18,11 +18,21 @@
     </header>
 
     <div class="game-area">
-      <canvas id="tetris" width="320" height="640"></canvas>
+      <canvas id="tetris" width="400" height="800"></canvas>
       <div class="next-piece">
         <h3>Next</h3>
-        <canvas id="nextCanvas" width="128" height="128"></canvas>
+        <canvas id="nextCanvas" width="80" height="80"></canvas>
       </div>
+    </div>
+
+    <!-- ✅ 5 TOMBOL BESAR MOBILE - CLASS PENTING! -->
+    <div class="mobile-controls">
+      <button class="control-btn left">←</button>
+      <button class="control-btn rotate">↻</button>
+      <button class="control-btn right">→</button>
+      <br>
+      <button class="control-btn down">⬇</button>
+      <button class="control-btn drop">💥</button>
     </div>
 
     <div class="controls">

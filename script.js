@@ -1,6 +1,6 @@
 class Tetris {
   constructor() {
-    console.log('🟢 Tetris Pro - EXPLOSION + SOUND!');
+    console.log('🟢 Tetris Pro - Mobile Fullscreen + Controls!');
     
     this.canvas = document.getElementById('tetris');
     this.nextCanvas = document.getElementById('nextCanvas');
@@ -17,16 +17,13 @@ class Tetris {
     this.pauseBtn = document.getElementById('pauseBtn');
     this.restartBtn = document.getElementById('restartBtn');
     
-    // 🎵 AUDIO CONTEXT
     this.audioCtx = null;
     this.initAudio();
-    
-    // 💥 PARTICLES
     this.particles = [];
     
     this.ROWS = 20;
     this.COLS = 10;
-    this.BLOCK_SIZE = 16;
+    this.BLOCK_SIZE = 20; // BESAR UNTUK MOBILE
     this.canvas.width = this.COLS * this.BLOCK_SIZE;
     this.canvas.height = this.ROWS * this.BLOCK_SIZE;
     this.ctx.scale(this.BLOCK_SIZE, this.BLOCK_SIZE);
@@ -65,7 +62,6 @@ class Tetris {
   }
 
   playExplosionSound() {
-    // 💥 EXPLOSION MULTI-TONE
     const notes = [800, 600, 1000, 400];
     notes.forEach((freq, i) => {
       setTimeout(() => this.playSound(freq, 0.1, 'sawtooth', 0.3), i * 30);
@@ -202,7 +198,6 @@ class Tetris {
           continue outer;
         }
       }
-      // 💥 EXPLOSION EFFECT + SOUND
       for (let x = 0; x < this.COLS; x++) {
         this.createExplosion(x, y);
       }
@@ -219,7 +214,6 @@ class Tetris {
       this.lines += rowCount;
       this.updateDisplay();
       this.checkLevelUp();
-      console.log(`🎉💥 ${rowCount} BARIS MELEDAK!`);
     }
   }
 
@@ -316,11 +310,9 @@ class Tetris {
       this.drawMatrix(this.current.matrix, this.current.pos, this.ctx);
     }
     
-    // 💥 DRAW EXPLOSION PARTICLES
     this.updateParticles();
     this.drawParticles();
     
-    // Next piece
     this.nextCtx.fillStyle = '#111';
     this.nextCtx.fillRect(0, 0, 8, 8);
     if (this.nextPiece && this.nextPiece.matrix) {
@@ -359,6 +351,7 @@ class Tetris {
   }
 
   bindEvents() {
+    // Keyboard
     document.addEventListener('keydown', e => {
       if (!this.isRunning || this.isPaused) return;
       switch(e.key) {
@@ -366,15 +359,33 @@ class Tetris {
         case 'ArrowRight': this.playerMove(1); break;
         case 'ArrowDown':  this.playerDrop(); break;
         case 'ArrowUp':    this.playerRotate(); break;
-        case ' ': e.preventDefault(), this.hardDrop(); break;
+        case ' ': e.preventDefault(); this.hardDrop(); break;
       }
       this.draw();
     });
 
+    // Main buttons
     this.startBtn.onclick = () => this.start();
     this.pauseBtn.onclick = () => this.pause();
     this.restartBtn.onclick = () => this.restart();
 
+    // ✅ MOBILE CONTROL BUTTONS
+    document.querySelectorAll('.control-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (!this.isRunning || this.isPaused) return;
+        
+        if (btn.classList.contains('left'))   this.playerMove(-1);
+        if (btn.classList.contains('right'))  this.playerMove(1);
+        if (btn.classList.contains('down'))   this.playerDrop();
+        if (btn.classList.contains('rotate')) this.playerRotate();
+        if (btn.classList.contains('drop'))   this.hardDrop();
+        
+        this.draw();
+      });
+    });
+
+    // Touch swipe
     let touchStartX = 0;
     this.canvas.addEventListener('touchstart', e => {
       e.preventDefault();
@@ -395,11 +406,9 @@ class Tetris {
   }
 
   start() {
-    // Resume audio context untuk mobile
     if (this.audioCtx && this.audioCtx.state === 'suspended') {
       this.audioCtx.resume();
     }
-    
     this.initGame();
     this.nextPiece = this.createPiece();
     this.playerReset();
@@ -426,6 +435,6 @@ class Tetris {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('🚀 Tetris EXPLOSION Loaded!');
+  console.log('🚀 Tetris Mobile Pro Loaded!');
   new Tetris();
 });
