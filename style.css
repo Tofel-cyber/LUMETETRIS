@@ -1,0 +1,200 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+  color: #0ff;
+  font-family: 'Orbitron', monospace;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+.container {
+  text-align: center;
+  max-width: 400px;
+  padding: 20px;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  font-weight: 900;
+  text-shadow: 0 0 20px #0ff;
+  margin-bottom: 10px;
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 20px #0ff; }
+  to { text-shadow: 0 0 30px #0ff, 0 0 40px #0ff; }
+}
+
+.stats {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.stats div {
+  background: rgba(0, 255, 255, 0.1);
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 1px solid #0ff;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+}
+
+/* ✅ FIX LAYOUT - MAIN BESAR, NEXT KECIL */
+.game-area {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  max-width: 400px;
+}
+
+canvas#tetris {
+  border: 3px solid #0ff;
+  border-radius: 12px;
+  background: #000;
+  box-shadow: 0 0 30px #0ff;
+  display: block;
+  max-width: 100%;
+}
+
+/* ✅ NEXT PIECE KECIL 70x70px */
+.next-piece {
+  background: rgba(0, 255, 255, 0.1);
+  padding: 10px;
+  border-radius: 12px;
+  border: 2px solid #0ff;
+  width: 90px;           /* Kontainer kecil */
+  height: 90px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.next-piece h3 {
+  font-size: 0.8rem;
+  margin-bottom: 5px;
+  color: #0ff;
+}
+
+#nextCanvas {
+  border: 2px solid #333;
+  border-radius: 8px;
+  background: #111;
+  width: 70px !important;    /* ✅ KECIL */
+  height: 70px !important;   /* ✅ KECIL */
+  margin: 0 auto;
+}
+
+.controls {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+button {
+  padding: 15px 25px;
+  font-size: 18px;
+  font-weight: 700;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  background: linear-gradient(45deg, #007bff, #00c6ff);
+  color: white;
+  box-shadow: 0 6px 20px rgba(0, 198, 255, 0.4);
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+button:hover:not(:disabled) {
+  background: linear-gradient(45deg, #0056b3, #0099cc);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 153, 204, 0.6);
+}
+
+button:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 15px rgba(0, 102, 153, 0.6);
+}
+
+button:disabled {
+  background: #555;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.game-over {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.95);
+  color: #ff4d4f;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.5s ease;
+  backdrop-filter: blur(10px);
+}
+
+.game-over.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.game-over h2 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  text-shadow: 0 0 20px #ff4d4f;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+/* ✅ MOBILE RESPONSIF */
+@media (max-width: 480px) {
+  .container { padding: 10px; }
+  header h1 { font-size: 2rem; }
+  .stats { 
+    font-size: 1rem; 
+    flex-direction: column; 
+    gap: 10px; 
+  }
+  .game-area {
+    flex-direction: column;    /* ✅ HP: Next di BAWAH */
+    align-items: center;
+  }
+  .next-piece {
+    width: 80px;
+    height: 80px;
+  }
+  #nextCanvas {
+    width: 60px !important;
+    height: 60px !important;
+  }
+}

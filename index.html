@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tetris Pro - Level & Sound</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Tetris Pro</h1>
+      <div class="stats">
+        <div>Skor: <span id="score">0</span></div>
+        <div>Level: <span id="level">1</span></div>
+        <div>Baris: <span id="lines">0</span></div>
+      </div>
+    </header>
+
+    <div class="game-area">
+      <canvas id="tetris" width="320" height="640"></canvas>
+      <div class="next-piece">
+        <h3>Next</h3>
+        <canvas id="nextCanvas" width="128" height="128"></canvas>
+      </div>
+    </div>
+
+    <div class="controls">
+      <button id="startBtn">▶️ Mulai</button>
+      <button id="pauseBtn" disabled>⏸️ Pause</button>
+    </div>
+
+    <div id="gameOver" class="game-over">
+      <h2>Game Over!</h2>
+      <p>Skor Akhir: <span id="finalScore">0</span></p>
+      <button id="restartBtn">Main Lagi</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
